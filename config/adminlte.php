@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Evolving Technology',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => '/storage/img/favicon.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -241,77 +241,96 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        
+        
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Profile',
+            'url'  => '/admin',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Banner',
+            'icon'    => 'fas fa-scroll',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Add Banner',
+                    'url'  => '/banner/create',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Banner List',
+                    'url'  => '/banner',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Project',
+            'icon'    => 'fas fa-laptop-house',
+            'submenu' => [
+                [
+                    'text' => 'Insert Project',
+                    'url'  => '/project/create',
+                ],
+                [
+                    'text' => 'List Projects',
+                    'url'  => '/project',
+                ],
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'    => 'Products',
+            'icon'    => 'fab fa-product-hunt',
+            'submenu' => [
+                [
+                    'text' => 'Add Product',
+                    'url'  => '/product/create',
+                ],
+                [
+                    'text' => 'List Products',
+                    'url'  => '/product',
+                ],
+            ],
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'    => 'Blogs',
+            'icon'    => 'fa fa-blog',
+            'submenu' => [
+                [
+                    'text' => 'Write Blog',
+                    'url'  => '/blog/create',
+                ],
+                [
+                    'text' => 'Blogs List',
+                    'url'  => '/blog',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Team',
+            'icon'    => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Insert Team Member',
+                    'url'  => '/team/create',
+                ],
+                [
+                    'text' => 'Team List',
+                    'url'  => '/team',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Client',
+            'icon'    => 'far fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Add Client',
+                    'url'  => '/client/create',
+                ],
+                [
+                    'text' => 'Client List',
+                    'url'  => '/client',
+                ],
+            ],
         ],
     ],
 

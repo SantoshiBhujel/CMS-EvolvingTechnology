@@ -13,10 +13,69 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PublicViewController@welcome')->name('welcome');
+
+Auth::routes(['register' => false]);
+
+
+Route::get('/admin', 'HomeController@index')->name('adminDashboard')->middleware('auth');
+
+//  -----------------
+//  ROUTE FOR BLOGS
+//  ------------------
+Route::get('/blogs/news','PublicViewController@blogs')->name('blogs');
+//  --------------------------
+//  ROUTE FOR PARTICULAR BLOG
+//  --------------------------
+Route::get('/blog/{id}/single','PublicViewController@singleBlog')->name('singleBlog');
+//  -----------------------------
+//  ROUTE FOR PARTICULAR PROJECT
+//  -----------------------------
+Route::get('/projects/{id}','PublicViewController@singleProject')->name('singleProject');
+//  -----------------------------
+//  ROUTE FOR PARTICULAR PRODUCT
+//  -----------------------------
+Route::get('/products/{id}','PublicViewController@singleProduct')->name('singleProduct');
+//  -----------------
+//  ROUTE FOR ABOUT US
+//  ------------------
+Route::get('/about','PublicViewController@about')->name('about');
+//  -----------------
+//  ROUTE FOR TEAMS
+//  ------------------
+Route::get('/team/members','PublicViewController@teams')->name('teams');
+
+//  --------------------------------------------------------------------
+//  ---------------------ROUTE WITH AUTH MIDDLEWARE---------------------
+//  --------------------------------------------------------------------
+Route::group(['middleware' => ['auth'] ], function() {
+        //  -----------------------------
+        //  ROUTE FOR USER CONTROLLER
+        //  -----------------------------
+        Route::resource('admins', 'UserController');
+        //  -----------------------------
+        //  ROUTE FOR BANNER CONTROLLER
+        //  -----------------------------
+        Route::resource('banner', 'BannerController');
+        //  -----------------------------
+        //  ROUTE FOR BLOG CONTROLLER
+        //  -----------------------------
+        Route::resource('blog', 'BlogController');
+        //  -----------------------------
+        //  ROUTE FOR PROJECT CONTROLLER
+        //  -----------------------------
+        Route::resource('project', 'ProjectController');
+        //  -----------------------------
+        //  ROUTE FOR PRODUCT CONTROLLER
+        //  -----------------------------
+        Route::resource('product', 'ProductController');
+        //  -----------------------------
+        //  ROUTE FOR TEAM CONTROLLER
+        //  -----------------------------
+        Route::resource('team', 'TeamController');
+        //  -----------------------------
+        //  ROUTE FOR CLIENT CONTROLLER
+        //  -----------------------------
+        Route::resource('client', 'ClientController');
+
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
