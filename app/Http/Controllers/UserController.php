@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -58,8 +59,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user= User::findOrFail($id);
-        return view('admin.profileEdit',compact('user'));
+       //
     }
 
     /**
@@ -71,10 +71,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //dd($request->all());
+        $this->validate($request,[
+            'name' =>'required | string', 
+            'email' => 'required | email | string',
+            'about' => 'nullable | string',
+            'image' => 'nullable | image | max:2047 | mimes:jpeg,png,jpg',
+            'password'  => 'nullable | string | min:8 | confirmed',
+        ]);
         $user=User::findOrFail($id);
 
-        $user->name= $request->name ? $request->name : $user->name;
+        $user->name= $request->name;
+        $user->email =  $request->email;
         $user->about = $request->about ? $request->about : $user->about;
         if(isset($request->password))
         {
@@ -89,7 +96,7 @@ class UserController extends Controller
         }
         $user->save();
         
-        return \redirect()->route('users.index')->with('success','User Updated');
+        return \redirect()->route('admins.index')->with('success','User Updated');
        
     }
 

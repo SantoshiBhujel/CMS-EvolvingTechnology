@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PublicViewController@welcome')->name('welcome');
 
-Auth::routes(['register' => false]);
+Auth::routes([
+        'register' => false,
+        // 'reset' => false
+]);
 
 
 Route::get('/admin', 'HomeController@index')->name('adminDashboard')->middleware('auth');
