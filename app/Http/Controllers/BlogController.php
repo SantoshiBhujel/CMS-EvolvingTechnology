@@ -66,7 +66,10 @@ class BlogController extends Controller
         {
             $extension= $request->image->getClientOriginalExtension();
             $fileNameToStore=  'blog-'.time().'.'.$extension;
-            $path=$request->image->storeAs('public/blog_images',$fileNameToStore);
+            // $path=$request->image->storeAs('public/blog_images',$fileNameToStore);
+            $path = public_path().'/storage/blog_images';
+            $upload = $request->file('image')->move($path,$fileNameToStore);
+            
             $blog->image= $fileNameToStore;
         }
         $blog->save();

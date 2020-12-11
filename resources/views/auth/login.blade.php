@@ -92,7 +92,7 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.login_message'))
+@section('auth_header',"ADMIN")
 
 @section('auth_body')
     <form action="{{ $login_url }}" method="post">
@@ -147,15 +147,4 @@
         </div>
 
     </form>
-@stop
-
-@section('auth_footer')
-    {{-- Password reset link --}}
-    @if($password_reset_url)
-        <p class="my-0">
-            <a href="{{ $password_reset_url }}">
-                {{ __('adminlte::adminlte.i_forgot_my_password') }}
-            </a>
-        </p>
-    @endif
 @stop

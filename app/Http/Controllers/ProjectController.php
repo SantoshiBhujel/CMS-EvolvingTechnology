@@ -71,7 +71,9 @@ class ProjectController extends Controller
         {
             $extension          =   $request->image->getClientOriginalExtension();
             $fileNameToStore    =  'project-'.time().'.'.$extension;
-            $path               =   $request->image->storeAs('public/project_images',$fileNameToStore);
+            //$path               =   $request->image->storeAs('public/project_images',$fileNameToStore);
+            $path = public_path().'/storage/project_images';
+            $upload = $request->file('image')->move($path,$fileNameToStore);
             $project->image      =   $fileNameToStore;
         }
         $project->save();

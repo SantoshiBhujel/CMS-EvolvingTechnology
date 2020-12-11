@@ -65,7 +65,11 @@ class BannerController extends Controller
         {
             $extension          =   $request->image->getClientOriginalExtension();
             $fileNameToStore    =  'banner-'.time().'.'.$extension;
-            $path               =   $request->image->storeAs('public/banner_images',$fileNameToStore);
+            // $path               =   $request->image->storeAs('public/banner_images',$fileNameToStore);
+
+            $path               = public_path().'/storage/banner_images';
+            $upload             = $request->file('image')->move($path,$fileNameToStore);
+
             $banner->image      =   $fileNameToStore;
         }
         $banner->save();

@@ -55,7 +55,7 @@
 				<div class="col-lg-4 col-12">
 					<!-- Menu-Right -->
 					<div class="menu-right">
-						<a href="#" class="theme-btn">Contact Us</a>
+						<a href="{{ route('contact') }}" class="theme-btn">Contact Us</a>
 					</div>
 					<!-- End-Menu-Right -->
 				</div>
@@ -146,7 +146,7 @@
 
 	@yield('body')
 
-	<section class="subscribe-area" style="background-image: url(/storage/img/subscribe-bg.jpg);">
+	{{-- <section class="subscribe-area" style="background-image: url(/storage/img/subscribe-bg.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-12 wow fadeInLeft" data-wow-duration="1s">
@@ -163,7 +163,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 	<!-- End Subscribe Area -->
 
 	@yield('client')

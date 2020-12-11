@@ -8,7 +8,9 @@ use App\Banner;
 use App\Client;
 use App\Product;
 use App\Project;
+use App\Mail\FreeConsulting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PublicViewController extends Controller
 {
@@ -50,6 +52,39 @@ class PublicViewController extends Controller
             ])
         );
     }
+
+     /**
+     * Display contact
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact()
+    {
+        return view('contact',with([
+                'projects'  => $this->helperFunction()->get('projects'),
+                'futureProjects'=> $this->helperFunction()->get('futureProjects'),
+                'products' => $this->helperFunction()->get('products')
+            ])
+        );
+    }
+    /**
+     * Free Consult
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function freeConsult(Request $request)
+    {
+        $this->validate($request,[
+            'name' =>'required | string', 
+            'email' =>'required | email',
+            'subject' => 'required | string',
+            'message' => 'required | string | max:1000 ',
+        ]);
+
+        Mail::to('admin@admin.com')->send(new FreeConsulting($request));
+        return \redirect()->back()->with('success',"Mail sent successfully");
+    }
+
      /**
      * Display PARTICULAR BLOG
      *

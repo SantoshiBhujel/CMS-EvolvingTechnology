@@ -2,7 +2,7 @@
 
 @section('body')
 
-<div class="breadcrumbs" style="background-image:url('img/breadcrumbs-bg.jpg')">
+<div class="breadcrumbs" style="background-image:url('/storage/img/breadcrumbs-bg.jpg')">
     <div class="container">
         <div class="row">
             <!-- Breadcrumbs-Content -->
@@ -25,7 +25,7 @@
     </div>
 </div>
 <!-- Service-Area -->
-<section class="service-area">
+{{-- <section class="service-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
@@ -46,7 +46,7 @@
                         <div class="cbp-item ui-ux branding">
                             <div class="portfolio-single">
                                 <div class="portfolio-img">
-                                    <img src="/storage/project_images/{{ $project->image }}" alt="#">
+                                    <img src="{{ asset('/storage/project_images/'.$project->image.'') }}" alt="#">
                                 </div>
                             </div>
                             <div class="portfolio-content">
@@ -60,8 +60,51 @@
             </div>
         </div>	
     </div>
-</section>	
+</section>	 --}}
 <!-- End Service Area -->
+<section class="service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
+                <div class="section-title">
+                    <h6>About Us</h6>
+                    <h3>Our Services</h3>
+                    <div class="line-bot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             @foreach ($projects as $index=>$project )
+             @if ($index<3)
+                 
+            
+            <div class="col-lg-4 col-md-4 col-12 wow fadeInUp" data-wow-duration="1s">
+                <!-- Single Service -->
+                <div class="single-service">
+                    <!-- Number -->
+                    <div class="number"><h6>1</h6></div>
+                    <div class="service-head">
+                        <div class="service-img">
+                             <img src="{{ asset('/storage/project_images/'.$project->image.'') }}" alt="#">
+                            <i class="fa fa-edit"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h4>{{ $project->title }}</h4>
+                        <p>{! $project->description !} </p>
+                    </div>
+                    <div class="service-bottom">
+                        <a href="contact.html"><i class="fa fa-chevron-right"></i></a>
+                    </div>	
+                </div>
+                <!-- End Single Service -->
+            </div>
+            @endif
+             @endforeach
+            <!-- End Single Service -->
+        </div>
+    </div>
+</section>
 
 <!-- About Area -->
 <section class="about-area">
@@ -70,7 +113,7 @@
             <div class="col-lg-6 col-md-6 col-12 wow fadeInLeft" data-wow-duration="1s">
                 <!-- About image -->
                 <div class="about-img">
-                    <img src="img/about-img.png" alt="#">
+                    <img src="{{ asset('img/about-img.png') }}" alt="#">
                     <div class="activity"><span>35+</span> Years</div>
                 </div>
                 <!-- End About image -->

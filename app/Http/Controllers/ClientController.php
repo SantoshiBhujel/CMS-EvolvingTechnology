@@ -59,7 +59,9 @@ class ClientController extends Controller
         $client->name= $request->name;
         $extension= $request->image->getClientOriginalExtension();
         $fileNameToStore=  'blog-'.time().'.'.$extension;
-        $path=$request->image->storeAs('public/client_images',$fileNameToStore);
+        //$path=$request->image->storeAs('public/client_images',$fileNameToStore);
+        $path = public_path().'/storage/client_images';
+        $upload = $request->file('image')->move($path,$fileNameToStore);
         $client->image= $fileNameToStore;
     
         $client->save();

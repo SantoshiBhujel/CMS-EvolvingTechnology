@@ -17,11 +17,20 @@ Route::get('/', 'PublicViewController@welcome')->name('welcome');
 
 Auth::routes([
         'register' => false,
-        // 'reset' => false
+        'reset' => false
 ]);
 
 
 Route::get('/admin', 'HomeController@index')->name('adminDashboard')->middleware('auth');
+
+//  -----------------
+//  ROUTE FOR CONTACT US
+//  ------------------
+Route::get('/contact','PublicViewController@contact')->name('contact');
+//  --------------------------
+//  ROUTE FOR FREE CONSULTING
+//  --------------------------
+Route::post('/free/consult','PublicViewController@freeConsult')->name('freeConsult');
 
 //  -----------------
 //  ROUTE FOR BLOGS

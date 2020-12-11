@@ -67,7 +67,10 @@ class ProductController extends Controller
         {
             $extension          =   $request->image->getClientOriginalExtension();
             $fileNameToStore    =  'product-'.time().'.'.$extension;
-            $path               =   $request->image->storeAs('public/product_images',$fileNameToStore);
+            //$path               =   $request->image->storeAs('public/product_images',$fileNameToStore);
+            $path = public_path().'/storage/product_images';
+            $upload = $request->file('image')->move($path,$fileNameToStore);
+            
             $product->image     =   $fileNameToStore;
         }
         $product->save();

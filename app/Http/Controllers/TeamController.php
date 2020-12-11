@@ -71,7 +71,9 @@ class TeamController extends Controller
         {
             $extension          =   $request->image->getClientOriginalExtension();
             $fileNameToStore    =  'team-'.time().'.'.$extension;
-            $path               =   $request->image->storeAs('public/team_images',$fileNameToStore);
+            //$path               =   $request->image->storeAs('public/team_images',$fileNameToStore);
+            $path = public_path().'/storage/team_images';
+            $upload = $request->file('image')->move($path,$fileNameToStore);
             $team->image        =   $fileNameToStore;
         }
         $team->save();

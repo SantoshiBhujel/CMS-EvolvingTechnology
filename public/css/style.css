@@ -394,10 +394,9 @@ header .navigation li a {
 	}
 	.product-section{
     background-image: url('product.jpg');
-    background-attachment:scroll:
+    background-attachment:scroll;
     background-size: cover;
     width: 100%;
-}
 	}
 	.hero-area .owl-item.active .button{
 		animation: fadeInUp 1.4s both 1.6s;

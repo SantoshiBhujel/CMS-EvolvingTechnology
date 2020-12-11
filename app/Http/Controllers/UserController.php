@@ -91,7 +91,11 @@ class UserController extends Controller
         {
             $extension= $request->file('image')->extension();
             $fileName='profile-'.time().'.'.$extension;
-            $path=$request->file('image')->storeAs('public/profile_images',$fileName);
+            // $path=$request->file('image')->storeAs(public_path().'public/profile_images',$fileName);
+
+            $path = public_path().'/storage/profile_images';
+            $uplaod = $request->file('image')->move($path,$fileName);
+            
             $user->image= $fileName;
         }
         $user->save();
